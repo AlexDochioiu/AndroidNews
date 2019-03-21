@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -37,12 +38,13 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation networkingDependencies.retrofit2
+    api networkingDependencies.retrofit2
     implementation networkingDependencies.okhttp3
     implementation networkingDependencies.jsonParsing.moshi
 
     implementation dependencyInjection.dagger2.annotation
-    annotationProcessor dependencyInjection.dagger2.processor
+    kapt dependencyInjection.dagger2.processor
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {

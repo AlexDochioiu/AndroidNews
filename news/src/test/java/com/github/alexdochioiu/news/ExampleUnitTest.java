@@ -1,4 +1,4 @@
-package com.github.alexdochioiu.newslogic;
+package com.github.alexdochioiu.news;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.github.alexdochioiu.newslogic;
+package com.github.alexdochioiu.news;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
