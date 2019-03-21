@@ -1,8 +1,8 @@
 package com.github.alexdochioiu.androidnews
 
 import android.app.Application
+import com.github.alexdochioiu.androidnews.base.InjectableComponent
 import com.github.alexdochioiu.network.DaggerNetworkComponent
-import com.github.alexdochioiu.network.NetworkComponent
 import com.github.alexdochioiu.news.DaggerNewsComponent
 import com.github.alexdochioiu.news.NewsComponent
 import dagger.Component
@@ -14,7 +14,7 @@ import javax.inject.Scope
  */
 class MyApplication : Application() {
 
-    lateinit var component: MyComponent private set
+    lateinit var component: AppComponent private set
 
     override fun onCreate() {
         super.onCreate()
@@ -26,16 +26,14 @@ class MyApplication : Application() {
             .networkComponent(networkComponent)
             .build()
 
-        component = DaggerMyApplication_MyComponent.builder()
+        component = DaggerMyApplication_AppComponent.builder()
             .newsComponent(newsComponent)
             .build().apply { inject(this@MyApplication) }
     }
 
     @Component(dependencies = [NewsComponent::class])
     @MyScope
-    interface MyComponent {
-        fun inject(myApplication: MyApplication)
-    }
+    interface AppComponent : InjectableComponent<MyApplication>
 
     @Retention(AnnotationRetention.SOURCE)
     @Scope
