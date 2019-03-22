@@ -13,14 +13,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Scope
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<MainActivity.MComponent>() {
 
     @Inject
     lateinit var newsRepository: NewsRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        buildDaggerComponentAndInject()
         setContentView(R.layout.activity_main)
 
         GlobalScope.launch {
@@ -29,17 +28,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun buildDaggerComponentAndInject() : MComponent =
+    override fun buildDaggerComponentAndInject() : MComponent =
         DaggerMainActivity_MComponent.builder()
             .appComponent(application.let { it as MyApplication }.component)
             .build().apply { inject(this@MainActivity) }
 
     @Component(dependencies = [MyApplication.AppComponent::class])
     @MScope
-    interface MComponent {
-        fun inject(mainActivity: MainActivity) : MainActivity
-    }
-    //interface MComponent : InjectableComponent<MainActivity>
+    interface MComponent : InjectableComponent<MainActivity>
 
     @Retention(AnnotationRetention.SOURCE)
     @Scope

@@ -9,11 +9,11 @@ import com.github.alexdochioiu.androidnews.MyApplication
  *
  */
 @Suppress("MemberVisibilityCanBePrivate")
-abstract class BaseActivity<T : InjectableComponent<*>>: AppCompatActivity() {
+abstract class BaseActivity<T : InjectableComponent<*>> : AppCompatActivity() {
 
-    val application = super.getApplication() as MyApplication
+    val application get() = super.getApplication() as MyApplication
 
-    lateinit var component : T
+    lateinit var component: T
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,5 +21,5 @@ abstract class BaseActivity<T : InjectableComponent<*>>: AppCompatActivity() {
         component = buildDaggerComponentAndInject()
     }
 
-    abstract fun buildDaggerComponentAndInject() : T
+    abstract fun buildDaggerComponentAndInject(): T
 }

@@ -35,12 +35,9 @@ class MyApplication : Application() {
 
     @Component(dependencies = [NewsComponent::class])
     @MyScope
-    interface AppComponent {
-        fun inject(myApplication: MyApplication) : MyApplication
-
+    interface AppComponent : InjectableComponent<MyApplication> {
         fun newsRepo(): NewsRepository
     }
-    //interface AppComponent : InjectableComponent<MyApplication>
 
     @Retention(AnnotationRetention.SOURCE)
     @Scope
