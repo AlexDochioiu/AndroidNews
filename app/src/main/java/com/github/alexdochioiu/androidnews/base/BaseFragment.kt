@@ -10,6 +10,6 @@ class BaseFragment : Fragment() {
     val fragmentActivity: FragmentActivity?
         get() = getActivity()
 
-    val activity: BaseActivity?
-        get() = getActivity()?.let { it as BaseActivity }
+    val activity: BaseActivity<*>?
+        get() = getActivity()?.let { it as BaseActivity<*> }
 }
