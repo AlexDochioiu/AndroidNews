@@ -7,6 +7,7 @@ import com.github.alexdochioiu.news.DaggerNewsComponent
 import com.github.alexdochioiu.news.NewsComponent
 import com.github.alexdochioiu.news.retrofit.NewsRepository
 import dagger.Component
+import timber.log.Timber
 import javax.inject.Scope
 
 /**
@@ -19,6 +20,10 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
 
         val networkComponent = DaggerNetworkComponent.builder()
             .appContext(this.applicationContext)

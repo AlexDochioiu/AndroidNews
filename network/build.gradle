@@ -36,7 +36,6 @@ dependencies {
     api            networkingDependencies.retrofit2.retrofit
     implementation networkingDependencies.okhttp3
 
-    implementation loggingDependency.timber
     implementation loggingDependency.okhttp3_interceptor
 
     implementation dependencyInjection.dagger2.annotation

@@ -1,15 +1,13 @@
 package com.github.alexdochioiu.androidnews
 
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import com.github.alexdochioiu.androidnews.base.BaseActivity
 import com.github.alexdochioiu.androidnews.base.InjectableComponent
 import com.github.alexdochioiu.news.retrofit.NewsRepository
 import dagger.Component
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Scope
 
@@ -24,13 +22,13 @@ class MainActivity : BaseActivity<MainActivity.MComponent>() {
 
         GlobalScope.launch {
             val result = newsRepository.fetchNewsAsync(query = "brexit").await()
-            Log.i("data", result.toString())
+            Timber.i(result.toString().substring(0, 1000))
         }
     }
 
     override fun buildDaggerComponentAndInject() : MComponent =
         DaggerMainActivity_MComponent.builder()
-            .appComponent(application.let { it as MyApplication }.component)
+            .appComponent(application.component)
             .build().apply { inject(this@MainActivity) }
 
     @Component(dependencies = [MyApplication.AppComponent::class])
