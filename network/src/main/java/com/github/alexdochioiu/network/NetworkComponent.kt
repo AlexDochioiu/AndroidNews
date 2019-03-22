@@ -1,6 +1,8 @@
 package com.github.alexdochioiu.network
 
+import android.content.Context
 import com.github.alexdochioiu.network.retrofit.RetrofitFactory
+import dagger.BindsInstance
 import dagger.Component
 
 /**
@@ -11,4 +13,13 @@ import dagger.Component
 interface NetworkComponent {
 
     fun retrofitFactory(): RetrofitFactory
+
+    @Component.Builder
+    interface Builder {
+
+        @BindsInstance
+        fun appContext(context: Context): Builder
+
+        fun build(): NetworkComponent
+    }
 }

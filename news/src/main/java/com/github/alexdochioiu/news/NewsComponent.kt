@@ -1,6 +1,7 @@
 package com.github.alexdochioiu.news
 
 import com.github.alexdochioiu.network.NetworkComponent
+import com.github.alexdochioiu.news.retrofit.NewsRepository
 import dagger.Component
 
 /**
@@ -8,5 +9,10 @@ import dagger.Component
  *
  */
 @NewsScope
-@Component(dependencies = [NetworkComponent::class])
-interface NewsComponent
+@Component(
+    dependencies = [NetworkComponent::class],
+    modules = [NewsModule::class]
+)
+interface NewsComponent {
+    fun repo(): NewsRepository
+}

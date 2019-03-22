@@ -5,6 +5,7 @@ import com.github.alexdochioiu.androidnews.base.InjectableComponent
 import com.github.alexdochioiu.network.DaggerNetworkComponent
 import com.github.alexdochioiu.news.DaggerNewsComponent
 import com.github.alexdochioiu.news.NewsComponent
+import com.github.alexdochioiu.news.retrofit.NewsRepository
 import dagger.Component
 import javax.inject.Scope
 
@@ -20,6 +21,7 @@ class MyApplication : Application() {
         super.onCreate()
 
         val networkComponent = DaggerNetworkComponent.builder()
+            .appContext(this.applicationContext)
             .build()
 
         val newsComponent = DaggerNewsComponent.builder()
@@ -33,7 +35,12 @@ class MyApplication : Application() {
 
     @Component(dependencies = [NewsComponent::class])
     @MyScope
-    interface AppComponent : InjectableComponent<MyApplication>
+    interface AppComponent {
+        fun inject(myApplication: MyApplication) : MyApplication
+
+        fun newsRepo(): NewsRepository
+    }
+    //interface AppComponent : InjectableComponent<MyApplication>
 
     @Retention(AnnotationRetention.SOURCE)
     @Scope
