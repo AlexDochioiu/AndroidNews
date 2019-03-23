@@ -10,13 +10,14 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        style="?attr/cardViewStyle"
+        style="?attr/focusableCardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:cardCornerRadius="@dimen/article_cardview_corner_radius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/Widget.Support.CoordinatorLayout.CardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -37,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/article_text_to_image_margin"
                 android:text="@{article.title}"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                android:textColor="?attr/colorAccentHighContrast"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/item_article_ivArticle"
                 app:layout_constraintTop_toTopOf="parent"
@@ -49,8 +51,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/article_text_to_image_margin"
                 android:layout_marginTop="5dp"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault"
                 android:text="@{article.description}"
+                android:maxLines="4"
+                android:ellipsize="end"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/item_article_ivArticle"
                 app:layout_constraintTop_toBottomOf="@id/item_article_tvTitle"

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Example on how to add one. This is not needed
-    <attr name="cardview_style" format="reference"/>
-    -->
+    <attr name="focusableCardViewStyle" format="reference"/>
+    <attr name="colorAccentHighContrast" format="color"/>
+    <attr name="colorAccentLowContrast" format="color"/>
+    <attr name="colorPrimaryHighContrast" format="color"/>
+    <attr name="colorPrimaryLowContrast" format="color"/>
 </resources>

@@ -35,6 +35,7 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
         fun bind(articleModel: ArticleModel) {
             itemBinding.article = articleModel
+
             Glide.with(itemView.context)
                 .load(articleModel.urlToImage)
                 .into(itemBinding.itemArticleIvArticle)

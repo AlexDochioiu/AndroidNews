@@ -1,30 +1,52 @@
 <resources>
 
     <!-- Themes. -->
-    <style name="Theme.Light" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="Theme.Light" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">@color/lightTheme_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/lightTheme_colorPrimaryDark</item>
+        <item name="colorAccent">@color/lightTheme_colorAccent</item>
+
+        <item name="colorPrimaryHighContrast">@color/lightTheme_colorPrimaryDark</item>
+        <item name="colorPrimaryLowContrast">@color/lightTheme_colorPrimaryLight</item>
+
+        <item name="colorAccentHighContrast">@color/lightTheme_colorAccentDark</item>
+        <item name="colorAccentLowContrast">@color/lightTheme_colorAccentLight</item>
 
         <item name="cardViewStyle">@style/CardView.Light.Custom</item>
+        <item name="focusableCardViewStyle">@style/CardView.Light.Custom.Focusable</item>
 
     </style>
 
-    <style name="Theme.Dark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="Theme.Dark" parent="Theme.MaterialComponents">
+        <item name="colorPrimary">@color/darkTheme_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/darkTheme_colorPrimaryDark</item>
+        <item name="colorAccent">@color/darkTheme_colorAccent</item>
+
+        <item name="colorPrimaryHighContrast">@color/darkTheme_colorPrimaryLight</item>
+        <item name="colorPrimaryLowContrast">@color/darkTheme_colorPrimaryDark</item>
+
+        <item name="colorAccentHighContrast">@color/lightTheme_colorAccentLight</item>
+        <item name="colorAccentLowContrast">@color/lightTheme_colorAccentDark</item>
 
         <item name="cardViewStyle">@style/CardView.Dark.Custom</item>
+        <item name="focusableCardViewStyle">@style/CardView.Dark.Custom.Focusable</item>
+    </style>
+
+
+    <!-- Theme Agnostic -->
+
+    <style name="Widget.Support.CoordinatorLayout.CardView">
+        <item name="android:padding">@dimen/article_cardview_padding</item>
     </style>
 
     <!-- Light Styles -->
 
     <style name="CardView.Light.Custom">
         <item name="android:layout_marginTop">@dimen/cardview_default_margin_top</item>
-        <item name="android:padding">@dimen/article_cardview_padding</item>
+    </style>
+    <style name="CardView.Light.Custom.Focusable">
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
 
     <!-- Dark Styles -->
@@ -32,5 +54,9 @@
     <style name="CardView.Dark.Custom">
         <item name="android:layout_marginTop">@dimen/cardview_default_margin_top</item>
         <item name="android:padding">@dimen/article_cardview_padding</item>
+    </style>
+    <style name="CardView.Dark.Custom.Focusable">
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
 </resources>

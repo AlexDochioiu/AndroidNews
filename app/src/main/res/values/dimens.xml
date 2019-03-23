@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- theme stuff -->
-    <dimen name="cardview_default_margin_top">4dp</dimen>
+    <dimen name="cardview_default_margin_top">10dp</dimen>
 
     <!-- item_article.xml -->
     <dimen name="article_cardview_padding">15dp</dimen>
