@@ -46,6 +46,7 @@ dependencies {
     implementation networkingDependencies.glide
 
     implementation ui.material
+    implementation ui.navigation
     implementation ui.recyclerview
     implementation ui.cardview
     implementation ui.circleimageview

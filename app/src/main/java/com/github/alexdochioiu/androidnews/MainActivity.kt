@@ -15,27 +15,9 @@ import javax.inject.Scope
 
 class MainActivity : BaseActivity<MainActivity.MComponent>() {
 
-    @Inject
-    lateinit var newsRepository: NewsRepository
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val myAdapter = ArticlesAdapter()
-
-        activity_main_rv.layoutManager = LinearLayoutManager(this)
-        activity_main_rv.adapter = myAdapter
-
-        GlobalScope.launch {
-            val result = newsRepository.fetchNewsAsync(query = "brexit").await().also {
-                runOnUiThread {
-                    myAdapter.replaceArticles(it.articles)
-                }
-            }
-
-            Timber.i(result.toString().substring(0, 1000))
-        }
     }
 
     override fun buildDaggerComponentAndInject() : MComponent =
@@ -45,7 +27,9 @@ class MainActivity : BaseActivity<MainActivity.MComponent>() {
 
     @Component(dependencies = [MyApplication.AppComponent::class])
     @MScope
-    interface MComponent : InjectableComponent<MainActivity>
+    interface MComponent : InjectableComponent<MainActivity> {
+        fun newsRepository(): NewsRepository
+    }
 
     @Retention(AnnotationRetention.SOURCE)
     @Scope

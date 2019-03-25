@@ -20,6 +20,7 @@ ext {
     okhttp_logging_interceptor = '3.11.0'
 
     material = '1.0.0'
+    navigation = '1.0.0'
     recyclerview = '1.1.0-alpha03'
     cardview = '1.0.0'
     circleimageview = '3.0.0'
@@ -62,6 +63,7 @@ ext {
 
     ui = [
             material: "com.google.android.material:material:$material",
+            navigation: "android.arch.navigation:navigation-fragment:$navigation",
             recyclerview: "androidx.recyclerview:recyclerview:$recyclerview",
             cardview: "androidx.cardview:cardview:$cardview",
             circleimageview: "de.hdodenhof:circleimageview:$circleimageview"

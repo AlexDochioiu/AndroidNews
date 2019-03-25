@@ -1,10 +1,11 @@
-package com.github.alexdochioiu.androidnews
+package com.github.alexdochioiu.androidnews.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.github.alexdochioiu.androidnews.R
 import com.github.alexdochioiu.androidnews.databinding.ItemArticleBinding
 import com.github.alexdochioiu.news.model.ArticleModel
 
@@ -22,7 +23,8 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_article, parent, false))
+        ViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context),
+            R.layout.item_article, parent, false))
 
     override fun getItemCount(): Int = articles.size
 

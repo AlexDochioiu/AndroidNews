@@ -1,5 +1,6 @@
 package com.github.alexdochioiu.androidnews.base
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 
@@ -13,8 +14,14 @@ abstract class BaseFragment<T : InjectableComponent<*>> : Fragment() {
     val fragmentActivity: FragmentActivity?
         get() = getActivity()
 
-    val activity: BaseActivity<*>?
+    open val activity: BaseActivity<*>?
         get() = getActivity()?.let { it as BaseActivity<*> }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        buildDaggerComponentAndInject()
+    }
 
     abstract fun buildDaggerComponentAndInject() : T
 }
