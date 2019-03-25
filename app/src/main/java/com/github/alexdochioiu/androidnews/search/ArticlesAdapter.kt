@@ -8,12 +8,14 @@ import com.bumptech.glide.Glide
 import com.github.alexdochioiu.androidnews.R
 import com.github.alexdochioiu.androidnews.databinding.ItemArticleBinding
 import com.github.alexdochioiu.news.model.ArticleModel
+import javax.inject.Inject
 
 /**
  * Created by Alexandru Iustin Dochioiu on 23-Mar-19
  *
  */
-class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+@SearchResultsFragment.MScope
+class ArticlesAdapter @Inject constructor(val listener: Listener) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
     private var articles: List<ArticleModel> = ArrayList()
 
@@ -37,11 +39,16 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
         fun bind(articleModel: ArticleModel) {
             itemBinding.article = articleModel
+            itemBinding.root.setOnClickListener { listener.onArticleSelected(articleModel) }
 
             Glide.with(itemView.context)
                 .load(articleModel.urlToImage)
                 .centerCrop()
                 .into(itemBinding.itemArticleIvArticle)
         }
+    }
+
+    interface Listener {
+        fun onArticleSelected(articleModel: ArticleModel)
     }
 }

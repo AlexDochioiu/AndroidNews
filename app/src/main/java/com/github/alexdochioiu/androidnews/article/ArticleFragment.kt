@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.github.alexdochioiu.androidnews.MainActivity
-
 import com.github.alexdochioiu.androidnews.R
 import com.github.alexdochioiu.androidnews.base.BaseFragment
 import com.github.alexdochioiu.androidnews.base.InjectableComponent
-import com.github.alexdochioiu.androidnews.search.SearchResultsFragment
 import dagger.Component
 import javax.inject.Scope
 
@@ -21,6 +19,8 @@ import javax.inject.Scope
 class ArticleFragment : BaseFragment<ArticleFragment.MComponent>() {
 
     override val activity get() = super.activity.let { it as MainActivity }
+
+    //val args: ArticleFragmentArgs by navArgs()
 
     override fun buildDaggerComponentAndInject(): MComponent = DaggerArticleFragment_MComponent.builder()
         .mComponent(activity.component)

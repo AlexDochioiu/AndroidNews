@@ -20,10 +20,16 @@ ext {
     okhttp_logging_interceptor = '3.11.0'
 
     material = '1.0.0'
-    navigation = '1.0.0'
+    navigation = '2.1.0-alpha01'
     recyclerview = '1.1.0-alpha03'
     cardview = '1.0.0'
     circleimageview = '3.0.0'
+
+    //ktx
+    core_ktx = '1.0.0'
+    fragment_ktx = '1.0.0'
+    lifecycle_ktx = '2.0.0'
+    navigation_ktx = '1.0.0-alpha06'
 
     // dependencies
     networkingDependencies = [
@@ -63,9 +69,23 @@ ext {
 
     ui = [
             material: "com.google.android.material:material:$material",
-            navigation: "android.arch.navigation:navigation-fragment:$navigation",
+            navigation : [ //this is non-ktx
+                    fragment : "androidx.navigation:navigation-fragment:$navigation",
+                    ui : "androidx.navigation:navigation-ui:$navigation"
+            ],
             recyclerview: "androidx.recyclerview:recyclerview:$recyclerview",
             cardview: "androidx.cardview:cardview:$cardview",
             circleimageview: "de.hdodenhof:circleimageview:$circleimageview"
+    ]
+
+    ktx = [
+            core: "androidx.core:core-ktx:$core_ktx",
+            fragment: "androidx.fragment:fragment-ktx:$fragment_ktx",
+            lifecycle: "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_ktx",
+            navigation : [
+                    common : "android.arch.navigation:navigation-common-ktx:$navigation_ktx",
+                    fragment: "android.arch.navigation:navigation-fragment-ktx:$navigation_ktx",
+                    ui: "android.arch.navigation:navigation-ui-ktx:$navigation_ktx",
+            ]
     ]
 }
