@@ -6,11 +6,13 @@
     <color name="darkTheme_colorAccent">#f9aa33</color>
     <color name="darkTheme_colorAccentLight">#ffdc65</color>
     <color name="darkTheme_colorAccentDark">#c17b00</color>
+    <color name="darkTheme_cardBackgroundColor">@color/cardview_dark_background</color>
 
-    <color name="lightTheme_colorPrimary">#344955</color>
-    <color name="lightTheme_colorPrimaryLight">#5f7481</color>
-    <color name="lightTheme_colorPrimaryDark">#0b222c</color>
-    <color name="lightTheme_colorAccent">#f9aa33</color>
-    <color name="lightTheme_colorAccentLight">#ffdc65</color>
-    <color name="lightTheme_colorAccentDark">#c17b00</color>
+    <color name="lightTheme_colorPrimary">#cfd8dc</color>
+    <color name="lightTheme_colorPrimaryLight">#ffffff</color>
+    <color name="lightTheme_colorPrimaryDark">#9ea7aa</color>
+    <color name="lightTheme_colorAccent">#ffab91</color>
+    <color name="lightTheme_colorAccentLight">#ffddc1</color>
+    <color name="lightTheme_colorAccentDark">#c97b63</color>
+    <color name="lightTheme_cardBackgroundColor">@color/cardview_light_background</color>
 </resources>

@@ -38,6 +38,7 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
             Glide.with(itemView.context)
                 .load(articleModel.urlToImage)
+                .centerCrop()
                 .into(itemBinding.itemArticleIvArticle)
         }
     }

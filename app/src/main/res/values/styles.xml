@@ -14,6 +14,7 @@
 
         <item name="cardViewStyle">@style/CardView.Light.Custom</item>
         <item name="focusableCardViewStyle">@style/CardView.Light.Custom.Focusable</item>
+        <item name="cardBackgroundColor">@color/lightTheme_cardBackgroundColor</item>
 
     </style>
 
@@ -30,6 +31,7 @@
 
         <item name="cardViewStyle">@style/CardView.Dark.Custom</item>
         <item name="focusableCardViewStyle">@style/CardView.Dark.Custom.Focusable</item>
+        <item name="cardBackgroundColor">@color/darkTheme_cardBackgroundColor</item>
     </style>
 
 

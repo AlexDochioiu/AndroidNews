@@ -7,7 +7,7 @@
     <dimen name="article_cardview_padding">15dp</dimen>
     <dimen name="article_cardview_corner_radius">@dimen/cardview_default_radius</dimen>
 
-    <dimen name="article_image_size">70dp</dimen>
+    <dimen name="article_image_size">90dp</dimen>
     <dimen name="article_image_outline">2dp</dimen>
     <dimen name="article_text_to_image_margin">10dp</dimen>
 </resources>

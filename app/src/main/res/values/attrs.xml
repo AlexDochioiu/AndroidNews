@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
     <attr name="focusableCardViewStyle" format="reference"/>
     <attr name="colorAccentHighContrast" format="color"/>
     <attr name="colorAccentLowContrast" format="color"/>
     <attr name="colorPrimaryHighContrast" format="color"/>
     <attr name="colorPrimaryLowContrast" format="color"/>
+
+    <attr name="cardBackgroundColor" format="color" tools:ignore="PrivateResource" />
 </resources>
