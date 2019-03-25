@@ -4,7 +4,7 @@
     <dimen name="cardview_default_margin_top">10dp</dimen>
 
     <!-- item_article.xml -->
-    <dimen name="article_cardview_padding">15dp</dimen>
+    <dimen name="article_cardview_padding">7dp</dimen>
     <dimen name="article_cardview_corner_radius">@dimen/cardview_default_radius</dimen>
 
     <dimen name="article_image_size">90dp</dimen>
