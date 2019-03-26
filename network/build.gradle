@@ -33,15 +33,15 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation core.kotlin.jdk
+
     api            networkingDependencies.retrofit2.retrofit
     implementation networkingDependencies.okhttp3
 
     implementation loggingDependency.okhttp3_interceptor
 
     implementation dependencyInjection.dagger2.annotation
-    kapt dependencyInjection.dagger2.processor
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    kapt           dependencyInjection.dagger2.processor
 }
 repositories {
     mavenCentral()
