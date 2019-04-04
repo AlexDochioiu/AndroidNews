@@ -10,21 +10,21 @@ import com.github.alexdochioiu.androidnews.MainActivity
 import com.github.alexdochioiu.androidnews.R
 import com.github.alexdochioiu.androidnews.base.BaseFragment
 import com.github.alexdochioiu.androidnews.base.InjectableComponent
+import com.github.alexdochioiu.androidnews.di.FragmentScope
 import dagger.Component
 import timber.log.Timber
-import javax.inject.Scope
 
 /**
  * A simple [Fragment] subclass.
  *
  */
-class ArticleFragment : BaseFragment<ArticleFragment.MComponent>() {
+class ArticleFragment : BaseFragment<ArticleFragment.ArticleFragmentComponent>() {
 
     override val activity get() = super.activity.let { it as MainActivity }
 
-    val args: ArticleFragmentArgs by navArgs()
+    private val args: ArticleFragmentArgs by navArgs()
 
-    override fun buildDaggerComponentAndInject(): MComponent = DaggerArticleFragment_MComponent.builder()
+    override fun buildDaggerComponentAndInject(): ArticleFragmentComponent = DaggerArticleFragment_ArticleFragmentComponent.builder()
         .mComponent(activity.component)
         .build().apply { inject(this@ArticleFragment) }
 
@@ -39,10 +39,6 @@ class ArticleFragment : BaseFragment<ArticleFragment.MComponent>() {
     }
 
     @Component(dependencies = [MainActivity.MComponent::class])
-    @MScope
-    interface MComponent : InjectableComponent<ArticleFragment>
-
-    @Retention(AnnotationRetention.SOURCE)
-    @Scope
-    annotation class MScope
+    @FragmentScope
+    interface ArticleFragmentComponent : InjectableComponent<ArticleFragment>
 }
