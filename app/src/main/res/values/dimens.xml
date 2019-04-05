@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- theme stuff -->
-    <dimen name="cardview_default_margin_top">10dp</dimen>
+    <dimen name="cardview_default_margin_top">30dp</dimen>
 
     <!-- item_article.xml -->
     <dimen name="article_cardview_padding">7dp</dimen>
@@ -10,4 +10,16 @@
     <dimen name="article_image_size">90dp</dimen>
     <dimen name="article_image_outline">2dp</dimen>
     <dimen name="article_text_to_image_margin">10dp</dimen>
+
+    <!-- General CardView Dimens - https://material.io/design/components/cards.html#specs -->
+    <dimen name="cardview_width">344dp</dimen>
+    <dimen name="cardview_text_margin">16dp</dimen>
+    <dimen name="cardview_buttons_margin">8dp</dimen>
+    <dimen name="cardview_image_to_buttons_margin">24dp</dimen>
+
+    <dimen name="cardview_title_height">18dp</dimen> <!-- gravity bottom for text -->
+    <dimen name="cardview_subtitle_height">22dp</dimen> <!-- gravity bottom for text -->
+
+    <dimen name="cardview_image_height">194dp</dimen>
+    <dimen name="cardview_image_width">@dimen/cardview_width</dimen>
 </resources>

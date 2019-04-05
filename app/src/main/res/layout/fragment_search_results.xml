@@ -7,8 +7,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSearchResults"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
         tools:listitem="@layout/item_article"/>
 
 </FrameLayout>

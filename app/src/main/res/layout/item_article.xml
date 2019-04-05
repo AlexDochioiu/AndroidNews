@@ -11,6 +11,66 @@
 
     <androidx.cardview.widget.CardView
         style="?attr/focusableCardViewStyle"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/article_cardview_corner_radius">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/item_article_tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{article.title}"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+                android:textColor="?attr/colorAccentHighContrast"
+                android:layout_marginTop="@dimen/cardview_text_margin"
+                android:layout_marginStart="@dimen/cardview_text_margin"
+                android:layout_marginEnd="@dimen/cardview_text_margin"
+                android:maxLines="2"
+                android:ellipsize="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Article Title" />
+
+            <TextView
+                android:id="@+id/item_article_tvDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small"
+                android:text="@{article.description}"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:layout_marginStart="@dimen/cardview_text_margin"
+                android:layout_marginTop="@dimen/cardview_buttons_margin"
+                android:layout_marginBottom="@dimen/cardview_text_margin"
+                android:layout_marginEnd="@dimen/cardview_text_margin"
+                android:gravity="bottom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_article_tvTitle"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  " />
+
+            <!-- todo change layout_marginTop -->
+            <ImageView
+                android:id="@+id/item_article_ivArticle"
+                android:layout_width="@dimen/cardview_image_width"
+                android:layout_height="@dimen/cardview_image_height"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_article_tvDescription"
+                android:layout_marginTop="@dimen/cardview_subtitle_height"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/ic_launcher_background"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!--
+    <androidx.cardview.widget.CardView
+        style="?attr/focusableCardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -88,4 +148,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+    -->
 </layout>

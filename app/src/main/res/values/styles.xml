@@ -12,7 +12,7 @@
         <item name="colorAccentHighContrast">@color/lightTheme_colorAccentDark</item>
         <item name="colorAccentLowContrast">@color/lightTheme_colorAccentLight</item>
 
-        <item name="cardViewStyle">@style/CardView.Light.Custom</item>
+        <item name="cardViewStyle">@style/Cardview.ThemeAgnostic</item>
         <item name="focusableCardViewStyle">@style/CardView.Light.Custom.Focusable</item>
         <item name="cardBackgroundColor">@color/lightTheme_cardBackgroundColor</item>
 
@@ -29,35 +29,29 @@
         <item name="colorAccentHighContrast">@color/lightTheme_colorAccentLight</item>
         <item name="colorAccentLowContrast">@color/lightTheme_colorAccentDark</item>
 
-        <item name="cardViewStyle">@style/CardView.Dark.Custom</item>
+        <item name="cardViewStyle">@style/Cardview.ThemeAgnostic</item>
         <item name="focusableCardViewStyle">@style/CardView.Dark.Custom.Focusable</item>
         <item name="cardBackgroundColor">@color/darkTheme_cardBackgroundColor</item>
     </style>
 
 
-    <!-- Theme Agnostic -->
+    <!-- Theme Agnostic Style Changes -->
 
-    <style name="Widget.Support.CoordinatorLayout.CardView">
-        <item name="android:padding">@dimen/article_cardview_padding</item>
+    <style name="Cardview.ThemeAgnostic" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_width">@dimen/cardview_width</item>
+        <item name="android:layout_marginTop">@dimen/cardview_default_margin_top</item>
     </style>
 
     <!-- Light Styles -->
 
-    <style name="CardView.Light.Custom">
-        <item name="android:layout_marginTop">@dimen/cardview_default_margin_top</item>
-    </style>
-    <style name="CardView.Light.Custom.Focusable">
+    <style name="CardView.Light.Custom.Focusable" parent="Cardview.ThemeAgnostic">
         <item name="android:clickable">true</item>
         <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
 
     <!-- Dark Styles -->
 
-    <style name="CardView.Dark.Custom">
-        <item name="android:layout_marginTop">@dimen/cardview_default_margin_top</item>
-        <item name="android:padding">@dimen/article_cardview_padding</item>
-    </style>
-    <style name="CardView.Dark.Custom.Focusable">
+    <style name="CardView.Dark.Custom.Focusable" parent="Cardview.ThemeAgnostic">
         <item name="android:clickable">true</item>
         <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
