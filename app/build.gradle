@@ -42,6 +42,7 @@ dependencies {
     implementation core.kotlin.coroutines
 
     implementation ktx.core
+    implementation ktx.lifecycle
     implementation ktx.fragment
     implementation ktx.navigation.common
     implementation ktx.navigation.runtime
@@ -56,6 +57,7 @@ dependencies {
     //implementation ui.navigation.fragment
     //implementation ui.navigation.ui
 
+    implementation ui.lifecycle_extension
     implementation ui.material
     implementation ui.recyclerview
     implementation ui.cardview
@@ -71,4 +73,8 @@ dependencies {
     kapt dependencyInjection.dagger2.processor
 
     implementation project (":news")
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions.freeCompilerArgs += ["-Xuse-experimental=kotlin.Experimental"]
 }

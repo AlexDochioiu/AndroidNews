@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.alexdochioiu.androidnews.MainActivity
@@ -11,26 +12,27 @@ import com.github.alexdochioiu.androidnews.R
 import com.github.alexdochioiu.androidnews.base.BaseFragment
 import com.github.alexdochioiu.androidnews.base.InjectableComponent
 import com.github.alexdochioiu.news.model.ArticleModel
-import com.github.alexdochioiu.news.retrofit.NewsRepository
 import dagger.BindsInstance
 import dagger.Component
 import kotlinx.android.synthetic.main.fragment_search_results.view.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import timber.log.Timber
+import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.consumeEach
 import javax.inject.Inject
 import javax.inject.Scope
 
+@ObsoleteCoroutinesApi
+@ExperimentalCoroutinesApi
 class SearchResultsFragment : BaseFragment<SearchResultsFragment.MComponent>(), ArticlesAdapter.Listener {
 
     override val activity get() = super.activity.let { it as MainActivity }
 
     @Inject
-    lateinit var newsRepository: NewsRepository
+    lateinit var viewModelFactory: SearchResultsViewModelFactory
 
     @Inject
     lateinit var articlesAdapter: ArticlesAdapter
+
+    lateinit var viewModel: SearchResultsViewModel
 
     override fun buildDaggerComponentAndInject(): MComponent = DaggerSearchResultsFragment_MComponent.builder()
         .mainActivityComponent(activity.component)
@@ -54,32 +56,29 @@ class SearchResultsFragment : BaseFragment<SearchResultsFragment.MComponent>(), 
         rootView.rvSearchResults.layoutManager = LinearLayoutManager(inflater.context)
         rootView.rvSearchResults.adapter = articlesAdapter
 
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(SearchResultsViewModel::class.java)
+
+        //todo create Job for coroutine
         GlobalScope.launch {
-            val result = newsRepository.fetchNewsAsync(query = "brexit").await().also {
-                GlobalScope.launch(Dispatchers.Main) {
-                    articlesAdapter.replaceArticles(it.articles)
-                }
-
-
+            viewModel.getArticlesChannel().consumeEach {
+                GlobalScope.launch(Dispatchers.Main) { articlesAdapter.replaceArticles(it)  }
             }
-
-            Timber.i(result.toString().substring(0, 1000))
         }
 
         return rootView
     }
 
     override fun onArticleSelected(articleModel: ArticleModel) {
-
-        val articleFragmentDirection = SearchResultsFragmentDirections.actionSearchResultsFragmentToArticleFragment(articleModel)
-
-        NavHostFragment.findNavController(this).navigate(articleFragmentDirection)
+        SearchResultsFragmentDirections.actionSearchResultsFragmentToArticleFragment(articleModel).let {
+            NavHostFragment.findNavController(this).navigate(it)
+        }
     }
 
     @Component(dependencies = [MainActivity.MComponent::class])
     @MScope
     interface MComponent : InjectableComponent<SearchResultsFragment> {
 
+        //todo change to the new @Component.Factory
         @Component.Builder
         interface Builder {
 
