@@ -34,10 +34,9 @@ class SearchResultsFragment : BaseFragment<SearchResultsFragment.MComponent>(), 
 
     lateinit var viewModel: SearchResultsViewModel
 
-    override fun buildDaggerComponentAndInject(): MComponent = DaggerSearchResultsFragment_MComponent.builder()
-        .mainActivityComponent(activity.component)
-        .adapterListener(this)
-        .build().apply { inject(this@SearchResultsFragment) }
+    override fun buildDaggerComponentAndInject(): MComponent = DaggerSearchResultsFragment_MComponent.factory()
+        .create(activity.component, this)
+        .apply { inject(this@SearchResultsFragment) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,16 +77,12 @@ class SearchResultsFragment : BaseFragment<SearchResultsFragment.MComponent>(), 
     @MScope
     interface MComponent : InjectableComponent<SearchResultsFragment> {
 
-        //todo change to the new @Component.Factory
-        @Component.Builder
-        interface Builder {
-
-            @BindsInstance
-            fun adapterListener(listener: ArticlesAdapter.Listener): Builder
-
-            fun mainActivityComponent(component: MainActivity.MComponent): Builder
-
-            fun build(): MComponent
+        @Component.Factory
+        interface Factory {
+            fun create(
+                component: MainActivity.MComponent,
+                @BindsInstance listener: ArticlesAdapter.Listener
+            ): MComponent
         }
     }
 

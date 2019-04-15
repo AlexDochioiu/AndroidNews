@@ -25,9 +25,8 @@ class MyApplication : Application() {
             Timber.plant(Timber.DebugTree())
         }
 
-        val networkComponent = DaggerNetworkComponent.builder()
-            .appContext(this.applicationContext)
-            .build()
+        val networkComponent = DaggerNetworkComponent.factory()
+            .create(this.applicationContext)
 
         val newsComponent = DaggerNewsComponent.builder()
             .networkComponent(networkComponent)

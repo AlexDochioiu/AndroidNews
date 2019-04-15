@@ -14,12 +14,8 @@ interface NetworkComponent {
 
     fun retrofitFactory(): RetrofitFactory
 
-    @Component.Builder
-    interface Builder {
-
-        @BindsInstance
-        fun appContext(context: Context): Builder
-
-        fun build(): NetworkComponent
+    @Component.Factory
+    interface Factory {
+        fun create(@BindsInstance context: Context): NetworkComponent
     }
 }
