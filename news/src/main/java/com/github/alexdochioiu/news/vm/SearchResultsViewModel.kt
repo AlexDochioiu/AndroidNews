@@ -1,4 +1,4 @@
-package com.github.alexdochioiu.androidnews.search
+package com.github.alexdochioiu.news.vm
 
 import androidx.lifecycle.ViewModel
 import com.github.alexdochioiu.news.model.ArticleModel
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
  *
  */
 @ExperimentalCoroutinesApi
-class SearchResultsViewModel(private val newsRepository: NewsRepository) : ViewModel() {
+class SearchResultsViewModel internal constructor(private val newsRepository: NewsRepository) : ViewModel() {
 
     @ExperimentalCoroutinesApi
     val articlesChannel = BroadcastChannel<List<ArticleModel>>(1)

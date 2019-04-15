@@ -12,6 +12,8 @@ import com.github.alexdochioiu.androidnews.R
 import com.github.alexdochioiu.androidnews.base.BaseFragment
 import com.github.alexdochioiu.androidnews.base.InjectableComponent
 import com.github.alexdochioiu.news.model.ArticleModel
+import com.github.alexdochioiu.news.vm.SearchResultsViewModel
+import com.github.alexdochioiu.news.vm.SearchResultsViewModelFactory
 import dagger.BindsInstance
 import dagger.Component
 import kotlinx.android.synthetic.main.fragment_search_results.view.*
