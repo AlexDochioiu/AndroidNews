@@ -4,11 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.MainThread
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.adapters.AdapterViewBindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.github.alexdochioiu.androidnews.R
 import com.github.alexdochioiu.androidnews.databinding.ItemArticleBinding
 import com.github.alexdochioiu.news.model.ArticleModel
+import com.google.common.util.concurrent.ListenableFuture
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import javax.inject.Inject

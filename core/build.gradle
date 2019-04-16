@@ -1,13 +1,12 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
 
+
+
     defaultConfig {
-        minSdkVersion 24
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -27,27 +26,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation core.kotlin.jdk
-    implementation core.kotlin.coroutines
-    implementation core.lifecycle_extension
-
-    implementation networkingDependencies.json_parsing.moshi
-    implementation networkingDependencies.retrofit2.coroutines_call_adapter
-    implementation networkingDependencies.retrofit2.moshi_converter_adapter
-
-    implementation dependencyInjection.dagger2.annotation
-    kapt dependencyInjection.dagger2.processor
-
-    api project (":network")
-
     testImplementation testDependencies.junit
-}
-repositories {
-    mavenCentral()
+
+    implementation ktx.core
+    implementation ktx.fragment
 }

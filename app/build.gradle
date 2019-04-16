@@ -36,10 +36,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    
-    implementation core.support.appcompat
+
     implementation core.kotlin.jdk
     implementation core.kotlin.coroutines
+    implementation core.lifecycle_extension
 
     implementation ktx.core
     implementation ktx.lifecycle
@@ -49,30 +49,25 @@ dependencies {
     implementation ktx.navigation.fragment
     implementation ktx.navigation.ui
 
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha03'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-
-    implementation networkingDependencies.glide
-
-    //implementation ui.navigation.fragment
-    //implementation ui.navigation.ui
-
-    implementation ui.lifecycle_extension
+    implementation ui.support_appcompat
+    implementation ui.constraint_layout
     implementation ui.material
     implementation ui.recyclerview
     implementation ui.cardview
     implementation ui.circleimageview
 
-    implementation loggingDependency.timber
+    implementation networkingDependencies.glide
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
+    implementation loggingDependency.timber
 
     implementation dependencyInjection.dagger2.annotation
     kapt dependencyInjection.dagger2.processor
 
     implementation project (":news")
+
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.runner
+    testImplementation testDependencies.espresso
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
